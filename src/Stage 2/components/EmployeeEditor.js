@@ -11,6 +11,13 @@ class EmployeeEditor extends Component {
   }
 
   // componentWillReceiveProps
+  //employee should be updated to a copy of the selected object from props, originalEmployee 
+  //should be updated to the selected object from props, and notModified should be updated to true.
+  componentWillReceiveProps(props){
+    this.setState({
+        employee: Object.assign({}, props.selected), originalEmployee: props.selected, notModified: true 
+    })
+  }
 
   handleChange(prop, val) {
     if ( this.state.notModified ) {

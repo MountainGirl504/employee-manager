@@ -8,6 +8,8 @@ class EmployeeEditor extends Component {
       originalEmployee: null,
       notModified: true
     };
+    
+
   }
 
   componentWillReceiveProps(props) {

@@ -11,12 +11,33 @@ class EmployeeEditor extends Component {
   }
 
   // componentWillReceiveProps
+  componentWillReceiveProps(props){
+    this.setState({
+      employee: Object.assign({}, props.selected), originalEmployee: props.selected, notModified: true
+    })
+  }
 
   // handleChange
+  handleChange(prop, value){
+    if(this.state.notModified){
+      this.setState({notModified: false})
+    }
+  }
 
   // save
+  save(){
+    this.state.originalEmployee.updateName(this.state.employee.name);
+    this.state.originalEmployee.updateTitle(this.state.employee.title);
+    this.state.otiginalEmployee.updatePhone(this.state.employee.phone);
+    this.setState({notModified: true});
+    this.props.refreshList();
+  }
 
   // cancel
+  cancel(){
+    var employeeCopy = Object.assign({}, this.state.originalEmployee);
+    this.setState({employee: employeeCopy, notModified: true});
+  }
   
   render() {
     return (
